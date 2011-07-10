@@ -1,0 +1,16 @@
+--- zend.c	2011-01-01 11:19:59.000000000 +0900
++++ zend.c.new	2011-07-03 16:53:37.000000000 +0900
+@@ -978,10 +978,12 @@
+ 			error_filename = NULL;
+ 			error_lineno = 0;
+ 			break;
++		case E_ERROR:
++			zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), 0 TSRMLS_CC, "Fatal error occuerd. ");
++			return;
+ 		case E_PARSE:
+ 		case E_COMPILE_ERROR:
+ 		case E_COMPILE_WARNING:
+-		case E_ERROR:
+ 		case E_NOTICE:
+ 		case E_STRICT:
+ 		case E_DEPRECATED:
